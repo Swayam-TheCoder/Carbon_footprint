@@ -26,7 +26,7 @@ export default function Nav({ view, setView }) {
                 type="button"
                 className={`px-3 py-2 rounded-lg border text-sm font-semibold transition-colors ${
                   view === tab.id
-                    ? 'text-lime bg-glow-lime/80 border-lime/40'
+                    ? 'text-lime bg-[var(--color-glow-lime)] border-lime/40'
                     : 'text-muted bg-transparent border-transparent hover:text-[#e8ecf4] hover:bg-elevated'
                 }`}
                 onClick={() => setView(tab.id)}
