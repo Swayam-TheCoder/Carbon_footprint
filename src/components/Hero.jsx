@@ -32,7 +32,7 @@ export default function Hero({ view, totalAnnual }) {
           )}
         </h1>
         <p className="text-base text-muted leading-relaxed max-w-[560px]">
-          {view === 'input' && 'Enter your SME operations below. We'll convert them into emissions and suggest actions with ROI.'}
+          {view === 'input' && 'Enter your SME operations below. We will convert them into emissions and suggest actions with ROI.'}
           {view === 'report' && 'Breakdown by electricity, travel, and logistics. Use the roadmap for actionable steps.'}
           {view === 'roadmap' && 'Prioritised actions with estimated savings and payback. Start tracking to see impact.'}
           {view === 'tracking' && 'Monitor your reduction actions and projected savings over time.'}
