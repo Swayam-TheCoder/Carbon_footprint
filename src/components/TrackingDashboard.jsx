@@ -1,9 +1,30 @@
-import { useState } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
-export default function TrackingDashboard({ plan, footprint }) {
-  const [selected, setSelected] = useState({})
-  const toggle = (id) => setSelected((s) => ({ ...s, [id]: !s[id] }))
+export default function TrackingDashboard({ plan, footprint, completedActions = [], setCompletedActions }) {
+  const isControlled = setCompletedActions != null
+  const [localSelected, setLocalSelected] = useState({})
+
+  const selected = useMemo(() => {
+    if (isControlled) return completedActions.reduce((o, id) => ({ ...o, [id]: true }), {})
+    return localSelected
+  }, [isControlled, completedActions, localSelected])
+
+  useEffect(() => {
+    if (isControlled) return
+    setLocalSelected(completedActions.reduce((o, id) => ({ ...o, [id]: true }), {}))
+  }, []) // sync initial from props once when uncontrolled
+
+  const toggle = (id) => {
+    if (isControlled) {
+      setCompletedActions((prev) =>
+        prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+      )
+    } else {
+      setLocalSelected((s) => ({ ...s, [id]: !s[id] }))
+    }
+  }
+
   const completed = Object.values(selected).filter(Boolean).length
   const totalActions = plan.length
   const kgSavedSoFar = plan.filter((a) => selected[a.id]).reduce((s, a) => s + a.kgSavedPerYear, 0)

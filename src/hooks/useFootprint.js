@@ -49,11 +49,19 @@ export function useFootprint() {
 
   const reset = () => setInputs(defaultInputs)
 
+  /** Load inputs from saved report (e.g. from backend). */
+  const loadReport = (savedInputs) => {
+    if (savedInputs && typeof savedInputs === 'object') {
+      setInputs((prev) => ({ ...defaultInputs, ...savedInputs }))
+    }
+  }
+
   return {
     inputs,
     updateInput,
     emissions,
     totalAnnual,
     reset,
+    loadReport,
   }
 }
