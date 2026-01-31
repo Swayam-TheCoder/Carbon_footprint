@@ -32,7 +32,7 @@ export default function Cursor() {
         }}
       />
       <div
-        className="cursor-outline fixed w-10 h-10 rounded-full pointer-events-none z-[9998] border border-[var(--color-text-muted)] opacity-50 transition-[left,top] duration-150"
+        className="cursor-outline fixed w-10 h-10 rounded-full pointer-events-none z-[9998] border border-[var(--color-text-muted)] opacity-50"
         style={{
           left: pos.x,
           top: pos.y,

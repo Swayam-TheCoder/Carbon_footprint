@@ -32,3 +32,35 @@ export async function healthCheck() {
   const res = await fetch(`${API_BASE}/api/health`)
   return res.ok
 }
+
+export async function getProfile() {
+  const res = await fetch(`${API_BASE}/api/profile`)
+  if (!res.ok) throw new Error('Failed to load profile')
+  return res.json()
+}
+
+export async function saveProfile(data) {
+  const res = await fetch(`${API_BASE}/api/profile`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  })
+  if (!res.ok) throw new Error('Failed to save profile')
+  return res.json()
+}
+
+export async function getTracker() {
+  const res = await fetch(`${API_BASE}/api/tracker`)
+  if (!res.ok) throw new Error('Failed to load tracker')
+  return res.json()
+}
+
+export async function saveTracker(entries) {
+  const res = await fetch(`${API_BASE}/api/tracker`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ entries }),
+  })
+  if (!res.ok) throw new Error('Failed to save tracker')
+  return res.json()
+}

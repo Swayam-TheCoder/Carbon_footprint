@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  /* Light (default) - map to original :root */
-  --color-bg-body: #f8f9fa;
-  --color-bg-alt: #ffffff;
+  /* Light (default) - slight green tint */
+  --color-bg-body: #f4faf7;
+  --color-bg-alt: #fafcfb;
   --color-bg-panel: #ffffff;
   --color-bg-input: #f8f9fa;
   --color-text-main: #1e293b;
@@ -20,8 +20,8 @@
 }
 
 [data-theme="dark"] {
-  --color-bg-body: #0f172a;
-  --color-bg-alt: #1e293b;
+  --color-bg-body: #0d1728;
+  --color-bg-alt: #151d2e;
   --color-bg-panel: #1e293b;
   --color-bg-input: #334155;
   --color-text-main: #f1f5f9;
